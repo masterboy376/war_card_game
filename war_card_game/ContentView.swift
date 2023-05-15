@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var playerCard:String = "card2" 
+    @State var cpuCard:String = "card3"
+    @State var playerScore:Int = 0
+    @State var cpuScore:Int = 0
+    
     var body: some View {
         ZStack {
             
@@ -21,12 +27,13 @@ struct ContentView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Image("card2")
+                    Image(playerCard)
                     Spacer()
-                    Image("card3")
+                    Image(cpuCard)
                     Spacer()
                 }
                 Spacer()
+                Button(deal(), Image("button"))
                 Image("button")
                 Spacer()
                 HStack {
@@ -36,7 +43,7 @@ struct ContentView: View {
                             .font(.headline)
                             .padding(.bottom, 10.0)
                             
-                        Text("0")
+                        Text(String(playerScore))
                             .font(.largeTitle)
                             
                     }
@@ -45,7 +52,7 @@ struct ContentView: View {
                         Text("CPU")
                             .font(.headline)
                             .padding(.bottom, 10.0)
-                        Text("0")
+                        Text(String(cpuScore))
                             .font(.largeTitle)
                     }
                     Spacer()
@@ -56,7 +63,25 @@ struct ContentView: View {
             }
         }
     }
-}
+    
+    func deal() {
+        var playerCardValue:Int = Int.random(in: 2...14)
+        playerCard = "card"+String(playerCardValue)
+
+        var cpuCardValue:Int = Int.random(in: 2...14)
+        var cpuCard = "card"+String(cpuCardValue)
+
+        if(playerCardValue>cpuCardValue){
+            playerScore+=1
+        }
+        else if(playerCardValue<cpuCardValue){
+            cpuScore+=1
+        }
+        else{
+            playerScore+=1
+            cpuScore+=1
+        }
+    }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
