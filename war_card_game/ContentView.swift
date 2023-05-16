@@ -46,10 +46,8 @@ struct ContentView: View {
                         Text("Player")
                             .font(.headline)
                             .padding(.bottom, 10.0)
-                        
                         Text(String(playerScore))
                             .font(.largeTitle)
-                        
                     }
                     Spacer()
                     VStack {
@@ -94,5 +92,4 @@ struct ContentView: View {
             ContentView()
         }
     }
-    
 }
