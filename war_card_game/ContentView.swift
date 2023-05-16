@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var playerCard:String = "card2" 
+    @State var playerCard:String = "card2"
     @State var cpuCard:String = "card3"
     @State var playerScore:Int = 0
     @State var cpuScore:Int = 0
@@ -39,7 +39,6 @@ struct ContentView: View {
                     Image("button")
                         .renderingMode(.original)
                 }
-                Image("button")
                 Spacer()
                 HStack {
                     Spacer()
@@ -47,10 +46,8 @@ struct ContentView: View {
                         Text("Player")
                             .font(.headline)
                             .padding(.bottom, 10.0)
-                            
                         Text(String(playerScore))
                             .font(.largeTitle)
-                            
                     }
                     Spacer()
                     VStack {
@@ -72,10 +69,12 @@ struct ContentView: View {
     func deal() {
         var playerCardValue:Int = Int.random(in: 2...14)
         playerCard = "card"+String(playerCardValue)
-
+        
         var cpuCardValue:Int = Int.random(in: 2...14)
-        var cpuCard = "card"+String(cpuCardValue)
-
+        cpuCard = "card"+String(cpuCardValue)
+        
+        print(cpuCard)
+        
         if(playerCardValue>cpuCardValue){
             playerScore+=1
         }
@@ -87,9 +86,10 @@ struct ContentView: View {
             cpuScore+=1
         }
     }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
