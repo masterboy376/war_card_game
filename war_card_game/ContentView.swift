@@ -33,7 +33,12 @@ struct ContentView: View {
                     Spacer()
                 }
                 Spacer()
-                Button(deal(), Image("button"))
+                Button(action: {
+                    deal()
+                }) {
+                    Image("button")
+                        .renderingMode(.original)
+                }
                 Image("button")
                 Spacer()
                 HStack {
